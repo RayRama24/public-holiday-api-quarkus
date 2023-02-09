@@ -17,15 +17,15 @@ public class HolidayDate {
     private Long id;
 
     private Date date;
-    private String description;
+    private String holidayName;
     
     public HolidayDate() {
     }
 
-    public HolidayDate(Long id, Date date, String description) {
+    public HolidayDate(Long id, Date date, String holidayName) {
         this.id = id;
         this.date = date;
-        this.description = description;
+        this.holidayName = holidayName;
     }
 
     public Long getId() {
@@ -44,12 +44,12 @@ public class HolidayDate {
         this.date = date;
     }
 
-    public String getDescription() {
-        return description;
+    public String getholidayName() {
+        return holidayName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setholidayName(String holidayName) {
+        this.holidayName = holidayName;
     }
 
    

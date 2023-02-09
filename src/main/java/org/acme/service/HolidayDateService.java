@@ -48,30 +48,30 @@ public class HolidayDateService {
     public Response addHolidayDate(HolidayDate holidayDate){
         result = new Result();
         // HolidayDate check = holidayDateRepo;
-        if (holidayDate.getDate() == null || holidayDate.getDescription().isEmpty()){
+        if (holidayDate.getDate() == null || holidayDate.getholidayName().isEmpty()){
             result.setCode(400);
             result.setSuccess(false);
             result.setMessage("Tanggal dan deskripsi tidak boleh kosong");
             return Response.status(400).entity(result).build();
       
         }       
-        else if (holidayDate.getDescription().length() > 50){
+        else if (holidayDate.getholidayName().length() > 50){
             result.setCode(400);
             result.setSuccess(false);
             result.setMessage("deskripsi tidak boleh lebih dari 50 karakter");
             return Response.status(400).entity(result).build();
            
         }
-        else if(holidayDateRepo.findByDate(holidayDate.getDate()) != null){
-            result.setCode(400);
-            result.setSuccess(false);
-            result.setMessage("tanggal sudah ada");
-            return Response.status(400).entity(result).build();
-        }
-            result.setMessage("Berhasil membuat date baru!");
-            holidayDateRepo.save(holidayDate);
-            return Response.ok(holidayDate).build();           
-    }
+        // else if(holidayDateRepo.findByDate(holidayDate.getDate()) != null){
+        //     result.setCode(400);
+        //     result.setSuccess(false);
+        //     result.setMessage("tanggal sudah ada");
+        //     return Response.status(400).entity(result).build();
+        // }
+        result.setMessage("Berhasil membuat date baru!");
+        holidayDateRepo.save(holidayDate);
+        return Response.ok(holidayDate).build();   
+    }        
 
     public HolidayDate getHolidayDateById(Long id){
         return holidayDateRepo.findById(id);
